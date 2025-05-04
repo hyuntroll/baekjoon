@@ -68,7 +68,7 @@ for i in range(0, n-8+1):
 print(min(ans))
 
 
-
+# 친구 코드
 n, m = map(int, input().split())
 lst = []
 word = "BWBWBWBWBW" # word[q+k+p//2]에서 k=1이고 p//2=1일때 word[9]까지 보니까 끝에 BW 추가
