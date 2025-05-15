@@ -1,10 +1,17 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 nlst = list(map(int, input().split()))
 M = int(input())
 
-def test(x):
-    global nlst
-    return int(x in nlst)
+mlst = map(int, input().split())
 
-mlst = map(test, input().split())
-print(list(mlst))
+_dict = {}
+for i in nlst:
+    _dict[i] = 0
+
+for j in mlst:
+    print(int(j in _dict), end=" ")
+
+# dictionary를 사용하면 더 빠름
