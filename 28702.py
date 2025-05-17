@@ -1,7 +1,7 @@
 
 
 
-lst = [input()]
+lst = [input() for i in range(3)]
 
 result_n = 0
 for i in range(3):

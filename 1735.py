@@ -7,10 +7,9 @@ def gcd(a, b):
         b = r
     return b
 
-def lcm(a, b):
-    return (a * b ) // gcd(a, b)
-
 a, b = map(int, input().split())
+c, d = map(int, input().split())
+e, f = a*d + b*c, b*d
+print(e//gcd(e, f), f//gcd(e, f), sep=" ")
 
-print(gcd(a, b))
-print(lcm(a, b))
+

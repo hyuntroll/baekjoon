@@ -6,11 +6,10 @@ def gcd(a, b):
         a = b
         b = r
     return b
-
 def lcm(a, b):
     return (a * b ) // gcd(a, b)
 
-a, b = map(int, input().split())
 
-print(gcd(a, b))
-print(lcm(a, b))
+
+for i in range(int(input())):
+    print(lcm(*list(map(int, input().split()))))
