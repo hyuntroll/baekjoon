@@ -5,4 +5,4 @@ for i in range(int(input())):
         stack.append(n)
     else:
         stack.pop()
-print(len(stack))
+print(sum(stack))
