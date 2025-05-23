@@ -5,13 +5,13 @@ stack = []
 for i in range(n):
 
     while stack and lst[stack[-1]] < lst[i]:
-        print(stack)
+        # print(stack)
         NGE[stack.pop()] = lst[i]
 
     stack.append(i)
 print(*NGE)
 
-
+# 스택에 관한 중요한 문제 문제 풀이할 가치가 있을 듯
 
 '''
 i = 0
