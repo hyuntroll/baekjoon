@@ -1,21 +1,41 @@
-def gcd(a, b):
-    while True:
-        r = a%b
-        if r == 0:
-            break
-        a = b
-        b = r
-    return b
-
+from math import gcd
+import sys
+# def findblank(lst, distance):
+input = sys.stdin.readline
 lst = []
-need = 0 
+need = 0
 
 for i in range(int(input())):
     lst.append(int(input()))
 
-blank = [ lst[i] - lst[i-1] -1 for i in range(1, len(lst))]
-print(blank)
-print(gcd(min(blank), max(blank)))
+blank = [ lst[i] - lst[i-1] for i in range(1, len(lst))]
+b_gcd = gcd(*blank)
+# print(b_gcd)
+
+# for i in range(lst[0], lst[-1]+1, b_gcd):
+#     if i not in lst:
+#         lst.remove(i)
+
+
+# for i in range(1, int(sqrt(b_gcd)+1 )):
+lst_s = set(lst)
+c = 0
+for i in range(lst[0], lst[-1]+1, b_gcd):
+    if i not in lst_s:
+        c += 1
+print(c)
+
+
+
+
+# lst = []
+# need = 0 
+
+# for i in range(int(input())):
+#     lst.append(int(input()))
+
+# print(blank)
+# print(gcd(min(blank), max(blank)))
 
 
 
