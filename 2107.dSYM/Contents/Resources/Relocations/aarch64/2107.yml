@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     "/Users/wars/Documents/백준/2107"
+relocations:     []
+...
