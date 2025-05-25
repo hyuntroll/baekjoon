@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 def lol(x):
     return int(x + 0.5)
 
