@@ -10,6 +10,7 @@ for _ in range(int(input())):
     else:
         command, x = al_command.split()
         x = int(x)
+        
         if command == "add":
             S.add(x)
         elif command == "remove":
@@ -18,7 +19,7 @@ for _ in range(int(input())):
             print(1 if x in S else 0)
         elif command == "toggle":
             if x in S:
-                S.remove(x)
+                S.discard(x)
             else:
                 S.add(x)
 
