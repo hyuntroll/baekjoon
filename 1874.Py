@@ -25,7 +25,7 @@ while True:
         lst.pop(0)
         p.append("-")
     else:
-        if len(l) == 0:
+        if len(l) == 0: # 왜냐하면 안맞아서 추가해야하는데 추가하고 싶어도 1 ~ n 수를 다 사용했기 때문에 정렬 불가 판단
             print("NO")
             break
         stack.append(l.pop(0))
