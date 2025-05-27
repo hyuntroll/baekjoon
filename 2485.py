@@ -9,6 +9,7 @@ blank = [ lst[i] - lst[i-1] for i in range(1, len(lst))]
 b_gcd = gcd(*blank)
 cnt = 0
 print(sum(i//b_gcd-1 for i in blank))
+## 저거 blank찍어보고 bl찍어보면 결국 blank에서 gcd나눈거에 -1 하면 몇개 채워야 할지 나옴 그거 더하면 됨
 
 
 # b_gcd = gcd(*blank)
