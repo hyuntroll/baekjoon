@@ -11,3 +11,11 @@ for i in range(0, len(A)):
 
 print(C)
 
+n = list(input())
+
+for i in n[:]:
+    if n.count(i) != 0:
+        print(f"{i}: {n.count(i)}")
+        while i in n:
+            # print(n)
+            n.remove(i)

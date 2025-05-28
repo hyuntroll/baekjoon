@@ -2,6 +2,9 @@
 s=input().split("-")
 # print(s)
 
+# 괄호치는데는 제약이 없기 때문에 -로 나눠줘서 그값들 다 연산해서 빼주면 됨
+
+#아니면 -발견되면 거기서부터 부호 반대로 해주면 될듯 / 또 -발견되면 거기서부터 다시하고 
 
 def hap(lst):
     c = 0
@@ -20,6 +23,22 @@ hapi = hap(s[0])
 for i in range(1, len(s)):
     hapi -= hap(s[i])
 print(hapi)
+
+
+string = input().split("-")
+hapi = sum([int(i) for i in string[0].split("+")])
+hapi -= sum([sum([int(k) for k in string[i].split("+")]) for i in range(1,len(string))])
+print(hapi)
+
+string = input().split("-")
+hapi = sum(map(int, string[0].split("+")))
+hapi -= sum(sum(map(int, k.split("+"))) for k in string[1:])
+print(hapi)
+
+# string = ['a', 'b', 'c', 'd']
+# for i in string:
+#     print("removing", i)
+#     string.remove(i)
 
 # c = 0
 # hap = 0
