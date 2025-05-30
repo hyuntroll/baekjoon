@@ -10,7 +10,7 @@ flag = False
 n = int(input())
 
 print(int(math.sqrt(n)))
-
+# 이 문제는 무조건 풀이 해야할 듯
 
 # fucking = 1
 # for i in range(2, n+1):
