@@ -38,3 +38,5 @@ if len(wait) == len(stack):
 else:
     print("Sad")
     
+
+    # 내가 적었는데 내가 무슨뜻인지 모르겠음 ㅋㅋㅋ
