@@ -6,7 +6,7 @@ int main() {
 	for (;;) {
 		int a, b, c, max_;
 
-		scanf_s("%d %d %d", &a, &b, &c);
+		scanf("%d %d %d", &a, &b, &c);
 		//printf("%d %d %d", a, b, c);
 
 		if (a == 0 && b == 0 && c == 0) {

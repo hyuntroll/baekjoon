@@ -14,7 +14,7 @@ def bob(i):
 
     idx += deq[i]
     if deq[i] > 0:
-        idx -= 1
+        idx -= 1 # 빼주는 이유는 앞에꺼가 빠지는 경우가 있기 때문에 하나 더 빼야지 찾으려는 idx가 됨
 
     # print("i", deq.pop(i))
     deq.pop(i)

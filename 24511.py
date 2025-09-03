@@ -82,7 +82,7 @@ l3 = list([i for i in range(qst) if not l1[i]])
 # print(l3)
 n = int(input())
 lst = list(map(int, input().split()))
-if n < len(l3):
+if n < len(l3): # 만약 테케가 큐 개수보다 작으면 큐를 테케 개수만큼 출력함
     for i in range(n):
         print(l2[l3[-(i+1)]],end=" ")
 else:
