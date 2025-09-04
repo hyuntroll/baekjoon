@@ -12,14 +12,14 @@ int dp(int n) {
 int main(void) {
 
     int n;
-    int i;
+    int k;
     scanf("%d", &n);
 
     dparr = (int * ) malloc(sizeof(int) * 12);
     dparr[1] = 1; dparr[2] = 2; dparr[3] = 4;
     for (int i=0; i<n; i++) {
-        scanf("%d", &i);
-        printf("%d\n", dp(i));
+        scanf("%d", &k); fflush(stdin);
+        printf("%d\n", dp(k));
     }
 
     free(dparr);
