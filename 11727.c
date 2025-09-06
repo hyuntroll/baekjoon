@@ -1,14 +1,15 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 
 int main() {
 
     int arr[1001] = {0};
-    arr[1] = 1; arr[2] = 3; arr[3] = 5; arr[4] = 8;
-    int n = 2;
-    for (int i= 5; i <n+1; i++) {
-        arr[i] = arr[i-1] + arr[i-2] + arr[i-3] + arr[i-4];
+    arr[1] = 1; arr[2] = 3; arr[3] = 5;
+    int n;
+    scanf("%d", &n);
+
+    for (int i= 4; i <n+1; i++) { 
+        arr[i] = (arr[i-1]%10007 + (arr[i-2] *2)%10007)%10007; // *2를 하는 이유는 2x2를 사용하는 경우까지 생각했을 때  1x2를 넣고 구한 상황과 2x2를 넣고 구한 상황 전부 구해야 한다
     }
 
     printf("%d", arr[n]);
