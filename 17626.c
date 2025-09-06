@@ -6,7 +6,7 @@ long long *dparr;
 long long dp(int depth) {
     if (dparr[depth] != 0) { return dparr[depth]; }
     dparr[depth] = dp(depth-1) + dp(depth-2);
-    return dparr[depth];
+    return dparr[depth]%10007; // 오버플로우가 발생하기 때문에 중간에 10007로 나눈 나머지 값을 사용하게 됨
 }
 
 int main() {
@@ -16,7 +16,7 @@ int main() {
 
     int n;
     scanf("%d", &n);
-    printf("%lld", dp(n)%10007);
+    printf("%lld", dp(n));
 
     return 0;
 }

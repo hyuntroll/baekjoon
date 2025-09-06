@@ -12,7 +12,7 @@ long long dp(int depth) {
     }
 
     return dparr[depth];
-}
+} 
 
 int main(void) {
 
