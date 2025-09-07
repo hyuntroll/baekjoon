@@ -1,40 +1,40 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
-long long *dparr;
+// 구하려는 수의 뤁트값을 먼저 구함
+// 그 루트값을 가지고 제곱근 반복돌림
+// 금마 가지고 DP[n-k**2] 를 하면 n-k**2까지 했을 때 최소값을 가질 수 있고 그 다음에 k**2를 더하면 결과적으로 n을 구할 수 있으니 +1해줌 
 
-long long dp(int depth) {
-    if (dparr[depth] != 0) { return dparr[depth]; }
-    dparr[depth] = dp(depth-1) + dp(depth-2);
-    return dparr[depth]%10007; // 오버플로우가 발생하기 때문에 중간에 10007로 나눈 나머지 값을 사용하게 됨
-}
+int * dparr;
 
-int minus(int n) {
-    return 0;
+int dp(int n) {
+    if (dparr[n] != 0) { return dparr[n]; }
+    int kkk = (int) (sqrt(n));
+    int temp;
+    if ( n == kkk*kkk) {
+        dparr[n] = 1;
+        return 1;
+    }
+    int min = 1000000;
+    for (int i = kkk; i > 0; i--) {
+        temp = dp(n- i*i); 
+        min = (min > temp+1) ? temp+1 : min;
+    }
+    dparr[n] = min;
+    return min;
+
 }
 
 int main() {
-
-    // dparr = (long long *) calloc(50001, sizeof(long long));
-    // dparr[1] = 1; dparr[2] = 2; dparr[3] = 3;
-
     int n;
-    int k;
-    int c = 0;
+    dparr = (int *) calloc(50001, sizeof(int));
+    dparr[1] = 1; dparr[2] = 2; dparr[3] = 3; dparr[4] = 1;
     scanf("%d", &n);
+    printf("%d", dp(n));
 
-    // printf("%d\n", (int)sqrt(n));
 
-    while ( n != 0 ) {
-        if (n < 0) { break; }
-
-        k = (int)sqrt(n);
-        printf("%d\n", k);
-        n -= pow(k, 2); c++;
-    }
-    printf("\n%d", c);
 
     return 0;
 }
 
-// 사용자에게 받은 값으로 먼저 루트값을 구함. 그 루트값을 제곱해서 빼고 다시 dp를 구함. 이때 횟구를 구하는 거기 때문에 dp에는 
