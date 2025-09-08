@@ -12,7 +12,7 @@ string = input()
 cnt = 0
 loop = n - l + 1
 queue = deque()
-# 문자열 슬라이싱 말고 deqeue
+# 문자열 슬라이싱 말고 큐에 넣어서 오래된거 빼고, 새로운거 집어넣는데 집어넣은거 카운트만 생각하면 될듯
 for idx in range(loop):
     cur_str = string[idx:idx+l]
 

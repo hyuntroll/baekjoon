@@ -1,22 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-long long *dparr;
-
-long long dp(int depth) {
-    if (dparr[depth] != 0) { return dparr[depth]; }
-    dparr[depth] = dp(depth-1) + dp(depth-2);
-    return dparr[depth];
-}
-
-int main() {
-
-    dparr = (long long *) calloc(1001, sizeof(long long));
-    dparr[1] = 1; dparr[2] = 2;
-
-    int n;
-    scanf("%d", &n);
-    printf("%lld", dp(n)%10007);
-
-    return 0;
-}
+for (int k=0; k < size; k++ ) {
+                //     if (!min || min > ptr[k] && ptr[k] != 0) {
+                //         min = ptr[k]; idx=k;
+                //     }
+                // }
