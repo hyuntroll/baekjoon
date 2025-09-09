@@ -1,14 +1,7 @@
-
 #include <stdio.h>
 
 int pi(int key) {
     return key/2;
-}
-int leftChild(int key) {
-    return key *2;
-}
-int rightChild(int key) {
-    return key*2 +1;
 }
 void swap(int* a, int* b) {
     int temp = *a;
@@ -16,23 +9,55 @@ void swap(int* a, int* b) {
     *b = temp;
 }
 
-void insert(int *arr, int value, int key) {
+void insert(int *arr, int key, int value) {
     arr[key] = value;
     while (arr[key] < arr[pi(key)] && key != 1) {
         swap(&arr[key], &arr[pi(key)]);
         key = pi(key);
     }
+}
+int pop(int *arr, int key, int end) {
+    int root = arr[key];
+    int idx;
 
+    arr[key] = arr[end--]; 
+
+    while (key * 2 <= end) {
+        if (key*2+1 <= end && arr[key*2+1] < arr[key*2]) {
+            idx = key*2+1;
+        } else {
+            idx = key*2;
+        }
+
+        if (arr[idx] < arr[key]) {
+            swap(&arr[idx], &arr[key]);
+            key = idx;
+        } else break;
+    }
+
+    return root;
 }
 
 
 int main() {
     int arr[100001] = {0};
+    int n, k;
+    int size = 0;
+    
+    scanf("%d", &n);
+    for (int i=0; i < n; i++) {
+        scanf("%d", &k); fflush(stdin);
+        if (k) {
+            insert(arr, ++size, k);
+        } 
+        else {
+            if (!size) { printf("0\n"); continue; }
+            printf("%d\n", pop(arr, 1, size--));
+        }
 
-    insert(arr, 1, 10);
-    printf("%d %d \n", arr[1], arr[2]);
-    insert(arr, 2, 30);
-    printf("%d %d \n", arr[1], arr[2]);
+    }
+
+    return 0;
 }
 
 
