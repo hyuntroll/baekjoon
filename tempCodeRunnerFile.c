@@ -1,71 +1,62 @@
 #include <stdio.h>
 
-int pi(int key) {
-    return key/2;
-}
-int lc(int key) {
-    return key *2;
-}
-int rc(int key) {
-    return key*2 +1;
-}
-void swap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+int arr[100001];
+int size = 0;
+
+void swap(int* p1, int* p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
 }
 
-void insert(int *arr, int key, int value) {
-    arr[key] = value;
-    while (arr[key] < arr[pi(key)] && key != 1) {
-        swap(&arr[key], &arr[pi(key)]);
-        key = pi(key);
+void insert(int value) {
+    arr[++size] = value;
+    int key = size;
+    while (key > 1) {
+        if (arr[key] > arr[key/2]) { // 부모 노드가 더 작으면
+            swap(&arr[key], &arr[key/2]);
+        }
+        else { break ; }// 그게 아니라 자식 노드가 더 작으면 
     }
 }
-int pop(int *arr, int key, int end) {
-    int root = arr[1]; // 루트꺼 뺌
-    int head = 1;
-    arr[1] = arr[end]; arr[end] = 0; // 루트에 맨 마지막꺼 넣음
-    if (end-1 == 1) { return root;}
-    while (( arr[head] > arr[lc(head)] || arr[head] > arr[rc(head)] )&& (head > pi(end)) && !head ) { // 헤드가 0인지 
-        if (arr[lc(head)] > arr[rc(head)]) {
-            swap(&arr[head], &arr[rc(head)]);
-            head = rc(head);
+
+int pop() {
+    int item = arr[1]; // 가장 상단의 값을 뽑음
+    arr[1] = arr[size--]; // 상단 값을 가장 마지막 값으로 변환, 사이즈를 1 감소
+    int key = 1; // 가장 상단 노드를 키로 설정
+    int idx;
+    while (key*2 >= size) { // 자식 노드가 있다면
+        if (key*2+1 >= size && arr[key*2+1] > arr[key*2]) { // 오른쪽 자식이 있고, 그때 오른쪽 자식이 왼쪽자식보다 크다면
+            idx = key*2+1;
         }
         else {
-            swap(&arr[head], &arr[lc(head)]);
-            head = lc(head);
+            idx = key*2;
         }
+
+        if (arr[idx] > arr[key]) { // 자식 노드가 부모노드보다 크다면
+            swap(&arr[idx], &arr[key]);  // 변환함
+            key = idx;
+        }
+        else { break; } // 그게 아니라면 끝냄
+
     }
 
-    return root;
+    return item;
 }
 
-void printa(int* arr, int size) {
-    printf("arr: ");
-    for(int i =1; i <= size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
 
 int main() {
-    int arr[100001] = {0};
     int n, k;
-    int size = 0;
-    
     scanf("%d", &n);
-    for (int i=0; i < n; i++) {
-        scanf("%d", &k); fflush(stdin);
-        if (k) {
-            insert(arr, ++size, k);
-        } 
-        else {
-            if (!size) { printf("0\n"); continue; }
-            printf("%d\n", pop(arr, 1, size--));
-            // printa(arr, size);
+    for (int i = 0; i<n; i++) {
+        scanf("%d", &k);
+        if (!k) {
+            if (!size) { printf("0\n"); }
+            else { printf("%d\n", pop()); }
         }
-
+        else {
+            insert(k);
+        }
     }
 
     return 0;

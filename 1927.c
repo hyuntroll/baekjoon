@@ -22,14 +22,14 @@ int pop(int *arr, int key, int end) {
 
     arr[key] = arr[end--]; 
 
-    while (key * 2 <= end) {
-        if (key*2+1 <= end && arr[key*2+1] < arr[key*2]) {
+    while (key * 2 <= end) { // 자식 노드가 있다면. ( 왼쪽노드가 오른쪽 노드 -1이기 때문에 일부러 그런거임 )
+        if (key*2+1 <= end && arr[key*2+1] < arr[key*2]) { // 오른쪽 노드가 있는 상태에서 오른쪽 노드보다 왼쪽노드가 크면
             idx = key*2+1;
-        } else {
+        } else { // 반대라면 왼쪽 노드를 넣음
             idx = key*2;
         }
 
-        if (arr[idx] < arr[key]) {
+        if (arr[idx] < arr[key]) { // 그래서 그 값이 부모값보다 작다면 스왑
             swap(&arr[idx], &arr[key]);
             key = idx;
         } else break;
