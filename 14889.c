@@ -53,7 +53,6 @@ int main() {
 
     }
 
-    // holyshit(0);
     backtracking(1, 0);
     printf("%d", min_score);
 
